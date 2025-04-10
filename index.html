@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Meeting Room User Login</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    <div class="intro">
+      <h1>Meeting Room Booking - Login</h1>
+      <div>
+        <div class="border1"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="helpText">
+      <p id="first">Login to user Staff / Student Module</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <table id="formText">
+      <tr>
+        <td><label for="module">Module</label></td>
+        <td>
+          <select id="module">
+            <option value="Staff">Staff Module</option>
+            <option value="Student">Student Module</option>
+          </select>
+        </td>
+      </tr>      
+      <tr>
+        <td><label for="username">User Name</label></td>
+        <td>
+          <input id="username" type="text" placeholder="key in your user name" maxlength="30">       
+        </td>
+      </tr>
+      <tr>
+        <td><label for="password">Password</label></td>
+        <td><input id="password" type="password"></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><button id="submitBtn">Submit</button></td>
+      </tr>
+    </table>
+  </div>
+
+  <p id="apiresponse">&nbsp;</p>
+
+</div>
+
+<script>
+  const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
+
+  const submitButton = document.getElementById("submitBtn");
+
+  // call submitBtnClicked() when this button is clicked by user
+  submitButton.addEventListener("click", submitBtnClicked);  
+
+  const module = document.getElementById("module");
+  const username = document.getElementById("username");
+  const password = document.getElementById("password");
+
+  function resetInputFields() {
+    module.selectedIndex = "0";
+    username.value = "";
+    password.value = "";
+  }
+
+  // user clicked submit button
+  async function submitBtnClicked() {
+    
+    if (module.value.length == 0) {
+      alert("Module cannot be empty");
+    } else if (username.value.length == 0) {
+      alert("User name cannot be empty");
+    } else if (password.value.length == 0) {
+      alert("Password cannot be empty");
+    } 
+    else {
+      displayLoadingHourGlass();
+      await sleep(1500);
+      if (password.value == "csit214") {
+        displayApiResponse("Password ok");
+        if (module.value == "Staff") {
+          resetInputFields();
+          document.location.href = "./meetingstaff.html";
+        }
+        else {
+          resetInputFields();
+          document.location.href = "./meetingbooking.html";
+        }
+      }
+      else {
+        password.value = "";
+        displayApiResponse("Password error");
+      }
+    }
+  }
+
+  // Loading hour glass animated GIF
+  const loadingImg = new Image(); 
+  loadingImg.src = "./loading.gif";
+
+  function displayLoadingHourGlass() {
+    document.getElementById("apiresponse").innerHTML = "";
+    document.getElementById("apiresponse").appendChild(loadingImg);
+  }
+
+  function displayApiResponse(apiResponse) {
+    document.getElementById("apiresponse").innerHTML = 
+      "API CALL RESPONSE: [ " + apiResponse + " ]";
+  }
+
+</script>
+
+</body>
+</html>

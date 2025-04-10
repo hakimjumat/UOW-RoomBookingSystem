@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Meeting Room Staff</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<div class="container">
+  <p id="logoutText"><a href="./index.html">[ Logout ]</a></p>
+  <div class="row">
+    <div class="intro">
+      <h1>Meeting Room Booking - Staff Module</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="helpText">
+      <p id="first">Enter room information to Create / Update a meeting room.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <table id="formText">
+      <tr>
+        <td><label for="roomName">Room Name</label></td>
+        <td>
+          <input id="roomName" type="text" placeholder="" maxlength="30">
+          <input id="roomId" type="hidden" value="">          
+        </td>
+      </tr>
+      <tr>
+        <td><label for="roomPrice">Room Price</label></td>
+        <td><input id="roomPrice" type="number" placeholder="" min="1" max="100"></td>
+      </tr>
+      <tr>
+        <td><label for="promoCode">Promo Code</label></td>
+        <td><input id="promoCode" type="text" placeholder=""></td>
+      </tr>      
+      <tr>
+        <td><label for="roomCapacity">Room Capacity</label></td>
+        <td><input id="roomCapacity" type="number" placeholder="" min="1" max="100"></td>
+      </tr>
+      <tr>
+        <td><label for="roomStatus">Room Status</label></td>
+        <td>
+          <select id="roomStatus">
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><button id="submitBtn">Submit</button></td>
+      </tr>
+    </table>
+  </div>
+
+  <br />
+  <div class="row">
+    <div class="helpText">
+      <p id="first">List of Meeting Rooms</p>
+    </div>
+  </div>
+
+  <!-- Empty Table -->
+  <div class="row">
+    <div>
+      <table id="roomTable">
+        <tr>
+          <th>Room Name</th>
+          <th width="15%">Price ($)</th>
+          <th width="15%">Promo Code</th>
+          <th width="15%">Capacity</th>
+          <th width="5%">Status</th>
+          <th width="10%">Room ID</th>          
+          <th width="1%">Edit</th>
+          <th width="1%">Delete</th>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="helpText">
+      <p id="third">Click the "Edit" to edit the meeting room. &nbsp; Click the "Delete" to remove the meeting room.</p>
+    </div>
+  </div>
+
+  <p id="apiresponse">API CALL RESPONSE: </p>
+  
+</div>
+
+<script  src="./scriptstaff.js"></script>
+
+</body>
+</html>
