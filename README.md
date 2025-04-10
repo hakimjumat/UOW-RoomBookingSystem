@@ -13,3 +13,4 @@ booking.
 
 # *Important
 Backend database is not utilised for accounts/room data but simulated. Tester can input anything for Username, while password is default to "csit214". 
+![Screenshot 2025-04-10 135230](https://github.com/user-attachments/assets/1b38ff68-20d7-4e8f-b5f6-5b74f30dd999)
